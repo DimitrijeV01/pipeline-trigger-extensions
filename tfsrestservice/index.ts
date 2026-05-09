@@ -55,6 +55,7 @@ export interface ITfsRestService {
     downloadArtifacts(buildId: number, downloadDirectory: string): Promise<void>;
     getQueueIdByName(buildQueue: string): Promise<number>;
     getBuildInfo(buildId: number): Promise<buildInterfaces.Build>;
+    getBuildTimeline(buildId: number): Promise<buildInterfaces.Timeline>;
     areBuildsFinished(triggeredBuilds: number[], failIfNotSuccessful: boolean, failIfPartiallySucceeded: boolean): Promise<boolean>;
     isBuildFinished(buildId: number): Promise<boolean>;
     wasBuildSuccessful(buildId: number): Promise<boolean>;
@@ -430,6 +431,12 @@ export class TfsRestService implements ITfsRestService {
         var build: buildInterfaces.Build = await this.makeRequest(
             () => this.vstsBuildApi.getBuild(this.teamProjectId, buildId));
         return build;
+    }
+
+    public async getBuildTimeline(buildId: number): Promise<buildInterfaces.Timeline> {
+        var timeline: buildInterfaces.Timeline = await this.makeRequest(
+            () => this.vstsBuildApi.getBuildTimeline(this.teamProjectId, buildId));
+        return timeline;
     }
 
     private parseParameterString(parameterString: string) : { [key: string]: string; } {

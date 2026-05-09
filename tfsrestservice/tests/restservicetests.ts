@@ -1093,7 +1093,7 @@ describe("TFS Rest Service Tests", () => {
         assert.equal(testRun3, actualTestRuns[1]);
     });
 
-    it("skips downloading if noartifacts were found to download", async () => {
+    it("skips downloading if no artifacts were found to download", async () => {
         const BuildId: number = 111;
         var downloadDirectory: string = `C:\\users\\someUser\\Downloads`;
 
@@ -1131,6 +1131,25 @@ describe("TFS Rest Service Tests", () => {
         // assert
         assert(consoleLogSpy.calledWith(`Directory ${downloadDirectory} does not exist - will be created`));
         assert(mkDirStub.calledWith(downloadDirectory));
+    });
+
+    it("getBuildTimeline returns timeline for the specified build id", async () => {
+        const BuildId: number = 111;
+
+        var timelineMock: TypeMoq.IMock<buildInterfaces.Timeline> = TypeMoq.Mock.ofType<buildInterfaces.Timeline>();
+        timelineMock.setup((x: any) => x.then).returns(() => undefined);
+
+        buildApiMock.setup(x => x.getBuildTimeline(TeamProjectId, BuildId))
+            .returns(async () => timelineMock.object);
+
+        await subject.initialize(index.AuthenticationMethodOAuthToken, "", "token", ServerUrl, TeamProjectName, true);
+
+        // act
+        var actualTimeline: buildInterfaces.Timeline = await subject.getBuildTimeline(BuildId);
+
+        // assert
+        assert.equal(timelineMock.object, actualTimeline);
+        buildApiMock.verify(x => x.getBuildTimeline(TeamProjectId, BuildId), TypeMoq.Times.once());
     });
 
     function setupBuildIdForBuildDefinition(name: string, id: number): void {

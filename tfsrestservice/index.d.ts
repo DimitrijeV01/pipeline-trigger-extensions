@@ -30,6 +30,7 @@ export interface ITfsRestService {
     downloadArtifacts(buildId: number, downloadDirectory: string): Promise<void>;
     getQueueIdByName(buildQueue: string): Promise<number>;
     getBuildInfo(buildId: number): Promise<buildInterfaces.Build>;
+    getBuildTimeline(buildId: number): Promise<buildInterfaces.Timeline>;
     areBuildsFinished(triggeredBuilds: number[], failIfNotSuccessful: boolean, failIfPartiallySucceeded: boolean): Promise<boolean>;
     isBuildFinished(buildId: number): Promise<boolean>;
     wasBuildSuccessful(buildId: number): Promise<boolean>;
@@ -69,6 +70,7 @@ export declare class TfsRestService implements ITfsRestService {
     getBuildDefinitionId(buildDefinitionName: string): Promise<number>;
     getAssociatedChanges(build: buildInterfaces.Build): Promise<buildInterfaces.Change[]>;
     getBuildInfo(buildId: number): Promise<buildInterfaces.Build>;
+    getBuildTimeline(buildId: number): Promise<buildInterfaces.Timeline>;
     private parseParameterString;
     private createBuildParameterObject;
     private updateCurlyBracesStack;
