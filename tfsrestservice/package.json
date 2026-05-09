@@ -1,0 +1,53 @@
+{
+  "name": "tfsrestservice",
+  "version": "2.4.1",
+  "description": "Service which abstracts calls to the TFS/VSTS REST API and exposes the objects to the clients for further usage.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huserben/TfsRestService.git"
+  },
+  "keywords": [
+    "TFS",
+    "VSTS",
+    "REST API"
+  ],
+  "author": "Benj Huser",
+  "license": "MIT",
+  "homepage": "https://github.com/huserben/TfsRestService#readme",
+  "dependencies": {
+    "azure-devops-node-api": "^11.1.1",
+    "linqts": "1.14.4",
+    "natives": "1.1.6",
+    "ts-data.stack": "1.0.6",
+    "typed-rest-client": "1.8.6"
+  },
+  "devDependencies": {
+    "@types/mocha": "9.1.0",
+    "@types/node": "17.0.21",
+    "@types/sinon": "10.0.11",
+    "@types/vso-node-api": "4.0.0",
+    "gulp": "4.0.2",
+    "gulp-cli": "2.3.0",
+    "gulp-mocha": "8.0.0",
+    "gulp-typescript": "5.0.1",
+    "mocha": "^9.2.1",
+    "sinon": "13.0.1",
+    "ts-sinon": "2.0.2",
+    "typemoq": "2.1.0",
+    "typescript": "4.5.5"
+  },
+  "files": [
+    "index.ts",
+    "index.d.ts",
+    "index.js",
+    "generalfunctions.ts",
+    "generalfunctions.d.ts",
+    "generalfunctions.js",
+    "LICENSE",
+    "ReadMe.md"
+  ]
+}
