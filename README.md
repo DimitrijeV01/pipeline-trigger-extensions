@@ -1,9 +1,9 @@
-# TfsExtensions (merged fork)
+# pipeline-trigger-extensions
 
-A merged fork of two upstream repositories by **Benjamin Huser-Berta**, both MIT-licensed:
+A focused fork of two upstream repositories by **Benjamin Huser-Berta**, both MIT-licensed:
 
-- [huserben/TfsExtensions](https://github.com/huserben/TfsExtensions) — build tasks and dashboard widgets, preserved under [`tfsextensions/`](./tfsextensions).
-- [huserben/tfsrestservice](https://github.com/huserben/tfsrestservice) — REST API wrapper consumed by the build tasks, preserved under [`tfsrestservice/`](./tfsrestservice).
+- [huserben/TfsExtensions](https://github.com/huserben/TfsExtensions) — build tasks for triggering, waiting on, and cancelling Azure DevOps pipelines. Preserved under [`tfsextensions/`](./tfsextensions). The dashboard widgets from upstream are not maintained in this fork and have been removed.
+- [huserben/tfsrestservice](https://github.com/huserben/tfsrestservice) — REST API wrapper consumed by the build tasks. Preserved under [`tfsrestservice/`](./tfsrestservice).
 
 Each subdirectory keeps its own `README` and `LICENSE` from the original repository. Full git history of both upstreams is preserved.
 
